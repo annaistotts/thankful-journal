@@ -1,0 +1,21 @@
+{
+  "name": "thankful-journal",
+  "version": "1.0.0",
+  "description": "Minimalist gratitude journal built for WDD 330",
+  "main": "main.js",
+  "type": "module",
+  "scripts": {
+    "start": "vite",
+    "dev": "vite",
+    "build": "vite build --emptyOutDir",
+    "preview": "vite preview"
+  },
+  "author": "Anna Inskeep",
+  "license": "ISC",
+  "devDependencies": {
+    "vite": "^6.3.3"
+  },
+  "dependencies": {
+    "firebase": "^12.6.0"
+  }
+}
