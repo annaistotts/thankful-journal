@@ -123,9 +123,17 @@ export async function initHistoryPage() {
         e.text.toLowerCase().includes(q) ||
         (e.tags || []).some((t) => t.toLowerCase().includes(q));
 
-      const matchesDate =
-        !date ||
-        (e.date && e.date.startsWith(date)); // ISO date begins with YYYY-MM-DD
+      let matchesDate = true;
+      if (date) {
+        // Check both date and createdAt fields, format as YYYY-MM-DD
+        const entryDate = e.date || e.createdAt;
+        if (entryDate) {
+          const entryDateStr = new Date(entryDate).toISOString().split('T')[0];
+          matchesDate = entryDateStr === date;
+        } else {
+          matchesDate = false;
+        }
+      }
 
       return matchesMood && matchesSearch && matchesDate;
     });
